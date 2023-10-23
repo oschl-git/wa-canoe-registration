@@ -1,0 +1,12 @@
+[
+    {
+        "nick": "Test",
+        "can_swim": "1",
+        "friend": "test"
+    },
+    {
+        "nick": "Erik",
+        "can_swim": "1",
+        "friend": "test"
+    }
+]
