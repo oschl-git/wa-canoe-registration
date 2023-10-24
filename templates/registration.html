@@ -43,6 +43,11 @@
     $("#register-form").submit(async function (event) {
         event.preventDefault();
 
+        if (!$('#yes').is(":checked")) {
+            alert('Musíte být plavec!');
+            return;
+        }
+
         try {
             const response = await $.get('/api/check-nickname/' + $('#nick').val());
             let exists = response.exists;
