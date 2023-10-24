@@ -3,25 +3,31 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <link rel="stylesheet" href="/style.css"/>
+    <link rel="stylesheet" href="/static/style.css"/>
     <title>Úvodní stránka</title>
 </head>
 <body>
-<h1>Rozsazení v lodích na vodáckém kurzu 2023 SPŠE Ječná</h1>
-<table>
-    <tr>
-        <th>Přezdívka</th>
-        <th>Umí plavat</th>
-        <th>Kamarád</th>
-    </tr>
-    {% for registration in registrations %}
-    <tr>
-        <td>{{ registration.nick }}</td>
-        <td>{{ "Ano" if registration.can_swim == "1" else "Ne" }}</td>
-        <td>{{ registration.friend }}</td>
-    </tr>
-    {% endfor %}
-</table>
-<p><a href="/registration">Registrovat se</a></p>
+<div class="rainbow">
+    <h1>Rozsazení v lodích na vodáckém kurzu 2023 SPŠE Ječná</h1>
+</div>
+<div class="rainbow">
+    <table>
+        <tr>
+            <th>Přezdívka</th>
+            <th>Umí plavat</th>
+            <th>Kamarád</th>
+        </tr>
+        {% for registration in registrations %}
+        <tr>
+            <td>{{ registration.nick }}</td>
+            <td>{{ "Ano" if registration.can_swim == "1" else "Ne" }}</td>
+            <td>{{ registration.friend }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<div class="link">
+    <a href="/registration">Registrovat se</a>
+</div>
 </body>
 </html>

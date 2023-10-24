@@ -8,5 +8,10 @@
         "nick": "Erik",
         "can_swim": "1",
         "friend": "test"
+    },
+    {
+        "nick": "Karel",
+        "can_swim": "1",
+        "friend": "Nem\u00e1mnoy"
     }
 ]

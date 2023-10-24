@@ -3,30 +3,41 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <link rel="stylesheet" href="/style.css"/>
+    <link rel="stylesheet" href="/static/style.css"/>
     <title>Registrace</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<h1>Registrace</h1>
-<form action="/register" method="POST" id="register-form">
-    <label for="nick">Přezdívka:</label>
-    <input type="text" id="nick" name="nick" required pattern="[A-Za-z0-9]{2,20}"
-           title="Přezdívka musí mít 2 až 20 znaků, obsahovat pouze čísla a písmena bez mezer.">
-
-    <label>Umíte plavat?</label>
-    <input type="radio" id="yes" name="can_swim" value="1" required>
-    <label for="yes">Ano</label>
-    <input type="radio" id="no" name="can_swim" value="0">
-    <label for="no">Ne</label>
-
-    <label for="friend">S kým byste chtěli být na lodi?</label>
-    <input type="text" id="friend" name="friend" pattern="[A-Za-z0-9]{2,20}"
-           title="Text musí mít 2 až 20 znaků, obsahovat pouze čísla a písmena bez mezer.">
-
-    <input type="submit" value="Odeslat">
-</form>
-<p><a href="/">Storno</a></p>
+<div class="rainbow">
+    <h1>Registrace</h1>
+</div>
+<div class="rainbow">
+    <form action="/register" method="POST" id="register-form">
+        <div>
+            <label for="nick">Přezdívka:</label>
+            <input type="text" id="nick" name="nick" required pattern="[\p{L}0-9]{2,20}"
+                   title="Přezdívka musí mít 2 až 20 znaků, obsahovat pouze čísla a písmena bez mezer.">
+        </div>
+        <div>
+            <label>Umíte plavat?</label>
+            <input type="radio" id="yes" name="can_swim" value="1" required>
+            <label for="yes">Ano</label>
+            <input type="radio" id="no" name="can_swim" value="0">
+            <label for="no">Ne</label>
+        </div>
+        <div>
+            <label for="friend">S kým byste chtěli být na lodi?</label>
+            <input type="text" id="friend" name="friend" pattern="[\p{L}0-9]{2,20}"
+                   title="Text musí mít 2 až 20 znaků, obsahovat pouze čísla a písmena bez mezer.">
+        </div>
+        <div>
+            <input type="submit" value="Odeslat">
+        </div>
+    </form>
+</div>
+<div class="link">
+    <a href="/">Storno</a>
+</div>
 
 <script>
     $("#register-form").submit(async function (event) {
