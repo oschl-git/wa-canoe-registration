@@ -1,27 +1,17 @@
 [
     {
-        "nick": "Erik",
+        "nick": "Simona",
         "can_swim": "1",
-        "friend": "Karel"
+        "friend": 1
     },
     {
-        "nick": "Tom\u00e1\u0161\u017e",
+        "nick": "Adam",
         "can_swim": "1",
-        "friend": "Karel"
+        "friend": 0
     },
     {
-        "nick": "Tom\u00e1\u01618",
+        "nick": "Maruna",
         "can_swim": "1",
-        "friend": "fsdas"
-    },
-    {
-        "nick": "Karel",
-        "can_swim": "1",
-        "friend": "Karel"
-    },
-    {
-        "nick": "Daniel6",
-        "can_swim": "1",
-        "friend": "Simona"
+        "friend": 1
     }
 ]

@@ -44,9 +44,21 @@ def save_registration(new_registration):
 		json.dump(output, file, indent=4)
 
 
+def display_registrations():
+	registrations = load_registrations()
+	registration_index = 0
+	output = []
+	for registration in registrations:
+		if isinstance(registration.friend, int):
+			registration.friend = registrations[registration.friend].nick
+		output.append(registration)
+		registration_index += 1
+	return output
+
+
 @app.route('/', methods=['GET'])
 def index():
-	return render_template('index.html', registrations=load_registrations()), 200
+	return render_template('index.html', registrations=display_registrations()), 200
 
 
 @app.route('/registration', methods=['GET'])
@@ -68,10 +80,19 @@ def register():
 	if nickname_exists(request.form['nick']):
 		abort(400, "Přezdívka již existuje.")
 
+	# If friend name already exists, add friend index
+	friend = request.form['friend']
+	if nickname_exists(request.form['friend']):
+		friend = get_registration_index(request.form['friend'])
+
+	# Check if somebody has user as friend, link together
+	if friend_exists(request.form['nick']):
+		modify_registration_friend(get_registration_index_by_friend(request.form['nick']), get_registrations_size())
+
 	save_registration(Registration(
 		request.form['nick'],
 		request.form['can_swim'],
-		request.form['friend'],
+		friend,
 	))
 
 	return redirect('/')
@@ -87,6 +108,51 @@ def nickname_exists(name):
 	for r in registrations:
 		if r.nick == name: return True
 	return False
+
+
+def friend_exists(name):
+	registrations = load_registrations()
+	for r in registrations:
+		if r.friend == name: return True
+	return False
+
+
+def get_registration_index(name):
+	registrations = load_registrations()
+	registration_index = 0
+	for r in registrations:
+		if r.nick == name: return registration_index
+		registration_index += 1
+	raise IndexError('Attempted to find index of nonexistent nickname.')
+
+
+def get_registration_index_by_friend(name):
+	registrations = load_registrations()
+	registration_index = 0
+	for r in registrations:
+		if r.friend == name: return registration_index
+		registration_index += 1
+	raise IndexError('Attempted to find index of nonexistent nickname.')
+
+
+def modify_registration_friend(registration_index, new_friend):
+	registrations = load_registrations()
+	registrations[registration_index].friend = new_friend
+
+	output = []
+	for r in registrations:
+		output.append({
+			'nick': r.nick,
+			'can_swim': r.can_swim,
+			'friend': r.friend
+		})
+
+	with open(data_file, 'w') as file:
+		json.dump(output, file, indent=4)
+
+
+def get_registrations_size():
+	return len(load_registrations())
 
 
 if __name__ == '__main__':
