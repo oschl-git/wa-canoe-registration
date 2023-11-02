@@ -1,2 +1,27 @@
 [
+    {
+        "nick": "Erik",
+        "can_swim": "1",
+        "friend": "Karel"
+    },
+    {
+        "nick": "Tom\u00e1\u0161\u017e",
+        "can_swim": "1",
+        "friend": "Karel"
+    },
+    {
+        "nick": "Tom\u00e1\u01618",
+        "can_swim": "1",
+        "friend": "fsdas"
+    },
+    {
+        "nick": "Karel",
+        "can_swim": "1",
+        "friend": "Karel"
+    },
+    {
+        "nick": "Daniel6",
+        "can_swim": "1",
+        "friend": "Simona"
+    }
 ]
